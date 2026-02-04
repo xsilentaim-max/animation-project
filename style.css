@@ -1,0 +1,154 @@
+:root {
+  color-scheme: dark;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  background-color: #0b1120;
+  color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1e293b, #0b1120 55%);
+}
+
+.scene {
+  padding: 32px;
+}
+
+.card {
+  width: min(420px, 92vw);
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.55);
+  display: grid;
+  gap: 24px;
+}
+
+.card__header h1 {
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.card__header p,
+.card__footer p {
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.orbit {
+  position: relative;
+  width: 240px;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+}
+
+.orbit__ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  animation: spin 18s linear infinite;
+}
+
+.orbit__dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.6));
+}
+
+.orbit__dot--primary {
+  background: radial-gradient(circle at 30% 30%, #7dd3fc, #0ea5e9);
+  animation: orbit 6s linear infinite;
+}
+
+.orbit__dot--secondary {
+  background: radial-gradient(circle at 30% 30%, #fcd34d, #f59e0b);
+  width: 16px;
+  height: 16px;
+  animation: orbit 9s linear infinite reverse;
+}
+
+.orbit__dot--accent {
+  background: radial-gradient(circle at 30% 30%, #f472b6, #db2777);
+  width: 12px;
+  height: 12px;
+  animation: orbit 12s linear infinite;
+}
+
+.orbit__core {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top, #f8fafc, #60a5fa 70%);
+  box-shadow: 0 0 24px rgba(96, 165, 250, 0.6);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.card__footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: ping 2s ease-in-out infinite;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(110px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(110px) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes ping {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
